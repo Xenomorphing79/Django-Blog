@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block body %}
+    {% for post in post_list %}
+        {% if post.draft %}
+        {% else %}
+        <h1><a href="{% url 'posts:detail' pk=post.pk %}" style="text-decoration:none;">{{ post.title }}</a></h1>
+        <p>{{ post.author }} - {{ post.create_date}}</p>
+        <p>Comments: {{ post.comments.count }}</p>
+        <hr>
+        {% endif %}
+        {% empty %}
+        <h1>No posts found...</h1>
+    {% endfor %}
+    <a href="{% url 'posts:create' %}" class="btn btn-success mt-4 px-5">Add a post</a>
+{% endblock body %}

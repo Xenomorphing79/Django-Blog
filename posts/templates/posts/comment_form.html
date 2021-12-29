@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load crispy_forms_tags %}
+{% block body %}
+    <h1>
+        Add a comment to the post...
+    </h1>
+    <form method="POST" class="post-form">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-success">Post comment</button>
+    </form>
+{% endblock body %}

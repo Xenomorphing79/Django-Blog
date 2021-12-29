@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block body %}
+    {% for post in post_list %}
+    {% if post.draft %}
+        {% if user.id == post.author.id %}
+            <h1><a href="{% url 'posts:detail' pk=post.pk %}" style="text-decoration:none;">{{ post.title }}</a></h1>
+                <p>Author: {{ post.author }}</p>
+                <hr>
+            {% endif %}
+        {% endif %}
+        {% empty %}
+        <h1>No drafts available...</h1>
+    {% endfor %}
+{% endblock body %}
